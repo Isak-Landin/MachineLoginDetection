@@ -1,5 +1,8 @@
 # Machine Login Detection
 
+## Current Version
+Version 1.0.0
+
 ## Project Overview
 MachineLoginDetection is a Bash-based tool designed to monitor and analyze login attempts on an Ubuntu server by parsing the `/var/log/auth.log` file. It tracks IP addresses, timestamps, and the success or failure of each attempt, storing this data in a PostgreSQL 9.5 database.
 
