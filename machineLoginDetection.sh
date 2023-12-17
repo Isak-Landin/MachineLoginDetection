@@ -13,11 +13,11 @@ filter_logs_for_data(){
 		no_special_logs=$(echo "$failed_password" | grep -v "message repeated")
 		special_logs=$(echo "$failed_password" | grep "message repeated")
 		if [ -n "$no_special_logs" ]; then
-			psql_ready_data+=$(echo "$no_special_logs" | awk '{print $1, $2, $3, $11, $13}')
+			psql_ready_data+=$(echo "$no_special_logs" | awk '{print $1, $2, $3, $11, $13, "fail"}')
 			psql_ready_data+=$'\n'
 		fi
 		if [ -n "$special_logs" ]; then
-			psql_ready_data+=$(echo "$special_logs" | awk '{print $1, $2, $3, $16, $18}')
+			psql_ready_data+=$(echo "$special_logs" | awk '{print $1, $2, $3, $16, $18, "fail"}')
 			psql_ready_data+=$'\n'
 		fi
 	fi
@@ -36,8 +36,10 @@ filter_logs_for_data(){
 filter_logs_for_data
 #echo "no special logs"
 #echo "$no_special_logs"
-echo "$psql_ready_data"
+#echo "$(./_machinePsqlDump.sh psql_ready_data)"
 #echo "$special_logs"
 #echo "$failed_password_data"
 #echo "$failed_password"
+
+echo "$psql_ready_data"
 
