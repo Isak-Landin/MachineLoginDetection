@@ -22,6 +22,5 @@ while IFS= read -r line; do
     converted_date=$(convert_to_psql_timestamp "$month" "$day" "$time")
     final_line="$converted_date $user $ip $status"
 
-    # Append to psql_ready_data
     echo "$final_line"
 done
