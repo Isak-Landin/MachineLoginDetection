@@ -1,3 +1,6 @@
+## Development Branch
+The `dev` branch is used for ongoing development. It contains the latest changes and features that are still under testing and may not be as stable as the `main` branch. This branch is suitable for development, testing, and contributions.
+
 ## Current Version
 Version 1.0.0
 
