@@ -26,14 +26,17 @@ def convert_time_format(month: str=None, day: str=None, hour: str=None, minute: 
     psql_format = datetime.datetime(year=year, month=int_month, day=int(day), hour=int(hour), minute=int(minute), second=int(second))
     return psql_format
 
+def read_file_contents():
+    with open('sessionData.txt', 'r') as file:
+        psql_ready_data_as_rows = file.read()
+        psql_ready_data_as_rows = psql_ready_data_as_rows.split(sep='\n')
+        
+        for row in psql_ready_data_as_rows:
+            print(row)
 
 def dump_all_to_psql():
     conn = psycopg2.connect(
-        f"dbname={DB_CONFIG['db_name']}"
-        f"user={DB_CONFIG['db_user']}"
-        f"host={DB_CONFIG['db_host']}"
-        f"password={DB_CONFIG['db_password']}"
-        f"port={DB_CONFIG['db_name']}"
+        "dbname=" + DB_CONFIG['db_name'] + " user=" + DB_CONFIG['db_user'] + " host=" + DB_CONFIG['db_host'] + " password=" + DB_CONFIG['db_password'] + " port=" + DB_CONFIG['db_name']
     )
     cursor = conn.cursor()
     cursor.execute()
@@ -42,5 +45,6 @@ def dump_all_to_psql():
     conn.close()
 
 # Dec 21 10:41:31
-print(convert_time_format(month='Dec', day='21', hour='10', minute='10', second='10'))
+# print(convert_time_format(month='Dec', day='21', hour='10', minute='10', second='10'))
 
+read_file_contents()

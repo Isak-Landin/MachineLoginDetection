@@ -41,5 +41,5 @@ filter_logs_for_data
 #echo "$failed_password_data"
 #echo "$failed_password"
 
-echo "$psql_ready_data"
+$(echo "$psql_ready_data" > sessionData.txt)
 
