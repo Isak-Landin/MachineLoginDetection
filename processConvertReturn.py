@@ -8,6 +8,13 @@ from config import DB_CONFIG
 
 
 def deliver_contents():
+    """
+    Reads sessionData.txt, which contains raw data, from /var/log/auth.log and outputs a
+    list of PSQL-ready objects.
+
+    :return: A list[data[]] where each object in the list is formatted as [timestamp, user, ip, status] all strings.
+    The status is a binary string indicating 'success' or 'fail'.
+    """
     file_rows_as_list_objects = read_file_contents()
     final_rows_as_list_objects = []
     for row in file_rows_as_list_objects:
@@ -38,7 +45,6 @@ def deliver_contents():
     print(final_rows_as_list_objects)
 
 
-
 # class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
 def convert_string_month_to_int_month(month:str):
     list_of_months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -47,6 +53,17 @@ def convert_string_month_to_int_month(month:str):
 
 
 def convert_time_format(month: str=None, day: str=None, hour: str=None, minute: str=None, second: str=None):
+    """
+    Converts individual time components into a standardized time format.
+
+    :param month: The month as a string.
+    :param day: The day as a string.
+    :param hour: The hour as a string.
+    :param minute: The minute as a string.
+    :param second: The second as a string.
+    :return: A string representing the formatted time in 'YYYY-MM-DD HH:MM:SS' format.
+    """
+
     # This method is created to convert the current time-format in /var/log/auth.log to
     #  a correct Psql TIMESTAMP format.
     if False in (month, day, hour, minute, second):
