@@ -1,4 +1,3 @@
-from config import DB_CONFIG
 import requests
 import json
 import os
@@ -6,6 +5,11 @@ import datetime
 import psycopg2
 
 from config import DB_CONFIG
+
+
+def deliver_contents():
+    file_rows_as_list_objects = read_file_contents()
+    print(file_rows_as_list_objects)
 
 
 # class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
@@ -26,13 +30,14 @@ def convert_time_format(month: str=None, day: str=None, hour: str=None, minute: 
     psql_format = datetime.datetime(year=year, month=int_month, day=int(day), hour=int(hour), minute=int(minute), second=int(second))
     return psql_format
 
+
 def read_file_contents():
     with open('sessionData.txt', 'r') as file:
         psql_ready_data_as_rows = file.read()
         psql_ready_data_as_rows = psql_ready_data_as_rows.split(sep='\n')
 
-        for row in psql_ready_data_as_rows:
-            print(row)
+        return psql_ready_data_as_rows
+
 
 def dump_all_to_psql():
     conn = psycopg2.connect(
@@ -44,7 +49,8 @@ def dump_all_to_psql():
     cursor.close()
     conn.close()
 
+
 # Dec 21 10:41:31
 # print(convert_time_format(month='Dec', day='21', hour='10', minute='10', second='10'))
+deliver_contents()
 
-read_file_contents()
