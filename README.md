@@ -1,8 +1,9 @@
+## Current Version
+Version 1.0.0
+
 ## Development Branch
 The `dev` branch is used for ongoing development. It contains the latest changes and features that are still under testing and may not be as stable as the `main` branch. This branch is suitable for development, testing, and contributions.
 
-## Current Version
-Version 1.0.0
 
 ## Project Overview
 MachineLoginDetection is a Bash and Python-based tool designed for monitoring login attempts on an Ubuntu server. It analyzes the `/var/log/auth.log` file, tracking IP addresses, timestamps, and the success or failure of login attempts, and stores this data in a PostgreSQL database.
