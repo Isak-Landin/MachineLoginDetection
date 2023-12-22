@@ -8,10 +8,11 @@ MachineLoginDetection is a Bash and Python-based tool designed for monitoring lo
 
 ### `main` Branch
 - **Purpose**: Represents the latest **stable** and **production-ready** version of the software.
-- **Usage**: Only updated from the `dev` branch after thorough testing and validation.
+- **Usage**: **Installation**
 
 ### `dev` Branch
-The `dev` branch is used for ongoing development. It contains the latest changes and features that are still under testing and may not be as stable as the `main` branch. This branch is suitable for development, testing, and contributions.
+- **Purpose**: Contains the latest changes and features that are still under **testing** and **may not be as stable** as the `main` branch.
+- **Usage**: The `dev` branch is used for ongoing **development**. This branch is suitable for **development**, **testing**, and **contributions**.
 
 ## Features
 - **Log Parsing**: Parses `/var/log/auth.log` to extract login attempt data.
