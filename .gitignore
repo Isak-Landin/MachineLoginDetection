@@ -1,2 +1,4 @@
 config.py
 *.save
+__pychache__/
+sessionData.txt
