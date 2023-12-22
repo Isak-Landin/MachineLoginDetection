@@ -3262,5 +3262,4 @@ Dec 22 11:54:13 root 218.92.0.34 fail
 Dec 22 11:58:35 root 218.92.0.55 fail
 Dec 22 12:01:31 root 61.177.172.179 fail
 Dec 22 12:10:25 root 180.101.88.197 fail
-Dec 22 12:04:48 isak 94.191.153.137 success
 

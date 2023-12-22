@@ -30,7 +30,7 @@ def read_file_contents():
     with open('sessionData.txt', 'r') as file:
         psql_ready_data_as_rows = file.read()
         psql_ready_data_as_rows = psql_ready_data_as_rows.split(sep='\n')
-        
+
         for row in psql_ready_data_as_rows:
             print(row)
 
