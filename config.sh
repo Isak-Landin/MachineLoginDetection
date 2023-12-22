@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Currently the only accepted unit of time is h
 today_date="$(date +'%b %d')"
+
+# Currently the only accepted unit of time is h
 timespan="24h"
 
 database_name="loginattemptsdb"
