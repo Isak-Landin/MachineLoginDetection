@@ -1,26 +1,24 @@
-# Machine Login Detection
-
 ## Current Version
 Version 1.0.0
 
 ## Project Overview
-MachineLoginDetection is a Bash-based tool designed to monitor and analyze login attempts on an Ubuntu server by parsing the `/var/log/auth.log` file. It tracks IP addresses, timestamps, and the success or failure of each attempt, storing this data in a PostgreSQL 9.5 database.
+MachineLoginDetection is a Bash and Python-based tool designed for monitoring login attempts on an Ubuntu server. It analyzes the `/var/log/auth.log` file, tracking IP addresses, timestamps, and the success or failure of login attempts, and stores this data in a PostgreSQL database.
 
 ## Features
-- **Log Parsing**: Efficiently parses `/var/log/auth.log` for login attempt data.
-- **Data Storage**: Stores login attempt details in PostgreSQL 9.5.
-- **Cron Automation**: Utilizes cron jobs for daily log analysis.
-- **Bash Scripting**: Entirely scripted in Bash for easy integration into Unix/Linux systems.
+- **Log Parsing**: Parses `/var/log/auth.log` to extract login attempt data.
+- **Data Storage**: Utilizes PostgreSQL for robust data management.
+- **Cron Automation**: Automated daily log analysis through cron jobs.
+- **Multi-Language Support**: Scripted in Bash and Python for enhanced functionality and ease of integration.
 
 ## Getting Started
 
 ### Prerequisites
-- Ubuntu Server (Recommended: Ubuntu 22.04)
-- PostgreSQL 9.5
-- Basic knowledge of Bash scripting and PostgreSQL
+- Ubuntu Server (Recommended: Ubuntu 22.04 or higher)
+- PostgreSQL 9.5 or higher
+- Python 3.6 or higher
+- Basic knowledge of Bash scripting, Python, and PostgreSQL
 
 ### Installation
 1. Clone the repository:
    ```bash
    git clone https://github.com/Isak-Landin/MachineLoginDetection.git
-   ```
