@@ -13,9 +13,8 @@ MachineLoginDetection is a Bash-based tool designed to monitor and analyze login
 - **Usage**: Only updated from the `dev` branch after thorough testing and validation.
 
 ### `dev` Branch
-- **Purpose**: Used for **continuous development**, updates, and testing.
-- **Important**: This and only this branch should be used for ongoing work and updates.
-
+- **Purpose**: Contains the latest changes and features that are still under **testing** and not as **stable** as the `main` branch.
+- **Usage**: The `dev` branch is used for ongoing **development**. This branch is suitable for **development**, **testing**, and **contributions**.
 
 ## Features
 - **Log Parsing**: Efficiently parses `/var/log/auth.log` for login attempt data.
