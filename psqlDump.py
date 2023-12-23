@@ -20,23 +20,22 @@ def is_entry_valid(single_entry: list[str]):
             print(time_error)
             return False
 
-        # Checks that all the incoming indexes are of the type string.
-
+    # Checks that all the incoming indexes are of the type string.
     if any(not isinstance(value, str) for value in single_entry):
         print("Error: Non-string value found.")
         return False
 
-        # Checks that none of the incoming indexes in the list are empty
+    # Checks that none of the incoming indexes in the list are empty
     if '' in single_entry:
         print("Error: Empty string found in entry.")
         return False
 
-        # Checks that the last index is either 'success' or 'fail'
+    # Checks that the last index is either 'success' or 'fail'
     if single_entry[3] not in ('success', 'fail'):
         print("Error: Last entry must be 'success' or 'fail'.")
         return False
 
-        # Checking if all parts of the ip-address are convertible to an int
+    # Checking if all parts of the ip-address are convertible to an int
     try:
         ip_parts = [int(part) for part in
                     single_entry[2].split('.')]  # assuming single_entry[2] is the IP address string
