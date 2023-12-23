@@ -80,18 +80,9 @@ def read_file_contents():
         return psql_ready_data_as_rows
 
 
-def dump_all_to_psql():
-    conn = psycopg2.connect(
-        "dbname=" + DB_CONFIG['db_name'] + " user=" + DB_CONFIG['db_user'] + " host=" + DB_CONFIG['db_host'] + " password=" + DB_CONFIG['db_password'] + " port=" + DB_CONFIG['db_name']
-    )
-    cursor = conn.cursor()
-    cursor.execute()
-    conn.commit()
-    cursor.close()
-    conn.close()
 
 
 # Dec 21 10:41:31
 # print(convert_time_format(month='Dec', day='21', hour='10', minute='10', second='10'))
-deliver_contents()
+# deliver_contents()
 
