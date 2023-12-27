@@ -1,13 +1,21 @@
 import psycopg2
+import hashlib
+
 from config import DB_CONFIG
 from config import table_configs
 from datetime import datetime
 
+from typing import List
 
-def is_entry_valid(single_entry: list[str]):
+
+def run_psql_job(all_entries: List[List[str]]):
+    process_filter_dump(all_entries)
+
+
+def is_entry_valid(single_entry: List[str]):
     def is_valid_timestamp(time: str):
         try:
-            datetime.strptime(time, "%Y-%m-%d %H:%M:%s")
+            datetime.strptime(time, "%Y-%m-%d %H:%M:%S")
             return True
         except TypeError as time_error:
             print('A time format error was encountered with the following entry: ' + str(single_entry))
@@ -59,13 +67,20 @@ def is_entry_valid(single_entry: list[str]):
     return True
 
 
-def remove_invalid_entries(all_entries: list[list[str]]):
+def remove_invalid_entries(all_entries: List[List[str]]):
     return [entry for entry in all_entries if is_entry_valid(entry)]
 
 
-def dump_all_to_psql_login_attempts(all_entries: list[list[str]]):
+def combine_columns_to_hash(attempt_time, username, ip_address):
+    hash_input = f"{attempt_time}{username}{ip_address}"
+    return hashlib.sha256(hash_input.encode()).hexdigest()
 
+
+def process_filter_dump(all_entries: List[List[str]]):
     all_entries = remove_invalid_entries(all_entries)
+    # TODO is NONE?
+    print(all_entries)
+    all_entries_with_hash = [entry + [combine_columns_to_hash(entry[0], entry[1], entry[2])] for entry in all_entries]
 
     # Establish connection to psql database
     conn = psycopg2.connect(
@@ -76,11 +91,18 @@ def dump_all_to_psql_login_attempts(all_entries: list[list[str]]):
     cursor = conn.cursor()
 
     # Insert query
-    query = f"INSERT INTO {table_configs['columns']['all_attempts']} VALUES (%s, %s, %s)"
+    insert_query = """
+    INSERT INTO login_attempts (ip_address, attempt_time, username, status, entry_hash)
+    VALUES (%s, %s, %s, %s, %s)
+    ON CONFLICT (entry_hash) DO NOTHING
+    """
 
+    # TODO NONE
+    print(all_entries_with_hash)
     # Insert all valid entries
-    cursor.executemany(query, all_entries)
+    # cursor.executemany(insert_query, all_entries_with_hash)
 
     conn.commit()
     cursor.close()
     conn.close()
+

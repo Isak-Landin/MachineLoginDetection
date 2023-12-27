@@ -1,7 +1,15 @@
 import datetime
-import psycopg2
 
 from config import DB_CONFIG
+from psql_dump import run_psql_job
+
+
+def process_convert_dump():
+    # Returned format will be [['%m %D %H:%M:%S', username, ip_address, status]]
+    log_contents_as_ready_list = deliver_contents()
+
+    # will expect the format from deliver_contents()
+    run_psql_job(log_contents_as_ready_list)
 
 
 def deliver_contents():
@@ -39,7 +47,7 @@ def deliver_contents():
             print('Encountered an unknown error when processing this list: ' + str([row]))
             print(e)
 
-    print(final_rows_as_list_objects)
+    return final_rows_as_list_objects
 
 
 # class datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
@@ -80,9 +88,8 @@ def read_file_contents():
         return psql_ready_data_as_rows
 
 
-
-
 # Dec 21 10:41:31
 # print(convert_time_format(month='Dec', day='21', hour='10', minute='10', second='10'))
-# deliver_contents()
+process_convert_dump()
+
 

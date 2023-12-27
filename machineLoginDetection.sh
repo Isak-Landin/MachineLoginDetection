@@ -33,6 +33,10 @@ filter_logs_for_data(){
         fi
 }
 
+execute_processing_data(){
+	python3.6 ./processConvertReturn.py
+}
+
 filter_logs_for_data
 #echo "no special logs"
 #echo "$no_special_logs"
@@ -42,4 +46,4 @@ filter_logs_for_data
 #echo "$failed_password"
 
 $(echo "$psql_ready_data" > sessionData.txt)
-
+execute_processing_data
