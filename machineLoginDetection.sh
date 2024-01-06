@@ -37,7 +37,8 @@ execute_processing_data(){
 	python3.6 ./processConvertReturn.py
 }
 
-filter_logs_for_data
+# For testing the underneath commented out lines have been utilized, for developer consistancy they remain where they are.
+#  That will allow for easier further development.
 #echo "no special logs"
 #echo "$no_special_logs"
 #echo "$(./_machinePsqlDump.sh psql_ready_data)"
@@ -45,5 +46,6 @@ filter_logs_for_data
 #echo "$failed_password_data"
 #echo "$failed_password"
 
+filter_logs_for_data
 $(echo "$psql_ready_data" > sessionData.txt)
 execute_processing_data
